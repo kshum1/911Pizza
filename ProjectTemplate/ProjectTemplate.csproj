@@ -90,9 +90,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cheesePizza.jpeg" />
+    <Content Include="cheese_pizza.jpg" />
+    <Content Include="chicken_pizza.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="home.html" />
     <Content Include="index.html" />
+    <Content Include="menu.html" />
+    <Content Include="menuStyle.css" />
+    <Content Include="pizza.jpg" />
+    <Content Include="pizzawoo.jpg" />
     <Content Include="ProjectServices.asmx" />
+    <Content Include="restaurantblack2.jpg" />
+    <Content Include="sausage_pizza.jpg" />
+    <Content Include="spinach_pizza.jpg" />
+    <Content Include="StyleSheet.css" />
+    <Content Include="supreme-pizza.jpeg" />
+    <Content Include="veggie_pizza.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
