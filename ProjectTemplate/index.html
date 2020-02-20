@@ -10,7 +10,7 @@
 	<script type="text/javascript">
 		function TestButtonHandler() {
 			var webMethod = "ProjectServices.asmx/TestConnection";
-			var parameters = "{}";
+            var parameters = "{}";
 
 			//jQuery ajax method
 			$.ajax({
@@ -27,17 +27,132 @@
 					alert("this code will only execute if javascript is unable to access the webservice");
 				}
 			});
-		}
+        }
+    function logon() {
+            var id = document.getElementById("txtemail").value;
+            var pass = document.getElementById("txtpass").value;
+
+            var webMethod = "ProjectServices.asmx/LogOn";
+            var parameters = "{\"uid\":\""+encodeURI(id)+"\", \"pass\":\""+encodeURI(pass)+"\"}";
+
+            //jQuery ajax method
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    var responseFromServer = msg.d;
+                    if (responseFromServer == true) {
+                        alert("logged in!");
+                        window.location.replace('home.html');
+                    }
+                    else {
+                        alert("bad credentials!");
+                    }
+                },
+                error: function (e) {
+                    alert("this code will only execute if javascript is unable to access the webservice");
+                }
+            });
+        }
 	</script>
 	<!--END OF YOUR OWN JAVASCRIPT-->
 
 	<!--AND YOUR OWN CSS CAN GO HERE AS WELL-->
 	<style>
+		 body {
+            margin: 0;
+            padding: 0;
+            background-image: url('restaurantblack2.jpg');
+            background-size: cover;
+            font-family: sans-serif;
+        }
+
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 420px;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .user {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            top: calc(-100px/2);
+            left: calc(50%-50px);
+            position: absolute;
+            border-radius: 60px;
+        }
+
+        h2 {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            color: peachpuff;
+        }
+
+        .labelemail, .labelpass {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .txtemail, .txtpass, .submit {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .txtemail, .txtpass {
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            height: 20px;
+            color: #fff;
+            background-color: transparent;
+            font-size: 16px;
+        }
+
+        .submit {
+            width: 260px;
+            height: 40px;
+            color: white;
+            font-size: 20pt;
+            border: 1px solid #fff;
+            cursor: pointer;
+            text-shadow: 0 -1px 0 #000;
+            box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
+            margin: 10px auto;
+            background-color: transparent;
+            transition: all 0.1s;
+        }
+
+        .submit:hover {
+            background: white;
+			color: black;
+        }
 
 	</style>
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
 	<button onclick="javascript: TestButtonHandler();">Click here to test connection!</button>
+	<div class="login">
+		<img src="pizzawoo.jpg" alt="Alternate Text" class="user" />
+		<h2 style="margin-bottom:20px">Employee Login</h2>
+		<div>
+			<label for="user" class="labelemail">User</label>
+			<input type="text" class="txtemail" id="txtemail" />
+			<label for="pass" class="labelpass">Password</label>
+			<input type="password" class="txtpass" id="txtpass" />
+			<button class="submit" onclick="javascript: logon();">Log On!</button>
+		</div>
+	</div>
 </body>
-</html >
+</html>
