@@ -1,0 +1,16 @@
+﻿body
+{
+font-family: 'Shadows Into Light', cursive;
+background-color: Tomato;
+margin: 50px;
+}
+div.navigation{
+	float: right;
+}
+td{
+	width: 500px;
+}
+footer{
+	position: static;
+	float: clear;
+}
