@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Add An Employee</title>
+
+    <script type="text/javascript">
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('restaurantblack2.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .row {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 420px;
+            padding: 40px 40px;
+            background: rgba(0,0,0,0.5);
+            font-family: "montserrat", sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            font-family: "montserrat", sans-serif;
+            padding-bottom: 20px;
+            color: peachpuff;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #fff;
+            padding-top: 15px;
+            font-size: 12pt;
+        }
+
+        .form {
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            height: 20px;
+            color: #fff;
+            background-color: transparent;
+            font-size: 16px;
+            width: 100%;
+            padding-bottom: 1px;
+        }
+
+        button {
+            width: 135px;
+            height: 40px;
+            color: white;
+            font-size: 20pt;
+            border: 1px solid #fff;
+            cursor: pointer;
+            text-shadow: 0 -1px 0 #000;
+            box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
+            margin: 10px auto;
+            background-color: transparent;
+            transition: all 0.1s;
+        }
+
+        button:hover{
+            background: white;
+			color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Add An Employee</h1>
+            <form>
+            <fieldset>
+
+                <legend>Employee ID</legend>
+                <input type="text" class="form" name="" id="id" />
+
+                <legend>Employee Username</legend>
+                <input type="text" class="form" name="" id="user" />
+
+                <legend>Employee Password</legend>
+                <input type="password" class="form" name="" id="pass" />
+
+                <button class="insert">Insert</button>
+                <button class="remove">Remove</button>
+                <button class="edit">Edit</button>
+
+            </fieldset>
+            </form>
+            <hr />
+            <table class="table">
+
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
