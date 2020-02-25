@@ -94,6 +94,7 @@
     <Content Include="cheesePizza.jpeg" />
     <Content Include="cheese_pizza.jpg" />
     <Content Include="chicken_pizza.jpg" />
+    <Content Include="form.html" />
     <Content Include="Global.asax" />
     <Content Include="home.html" />
     <Content Include="index.html" />

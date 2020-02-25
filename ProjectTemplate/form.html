@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>911 Pizza Home</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script>
+        $(document).ready(function () {
+            $('input[type="radio"]').click(function () {
+                var inputValue = $(this).attr("value");
+                var targetBox = $("." + inputValue);
+                $(".box").not(targetBox).hide();
+                $(targetBox).show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>911 Pizza</h1>
+        <h2 id="slogan"><em>"No more pizza emergencies"</em></h2>
+        <div class="navbar">
+            <button class="navButton" onclick="window.location.href='home.html'">Home</button>
+            <button class="navButton" onclick="window.location.href='contact.html'">Contact</button>
+            <button class="navButton" onclick="window.location.href='menu.html'">Menu</button>
+            <button class="navButton" onclick="nwindow.location.href='cart.html'">Cart</button>
+        </div>
+    </header>
+    <main>
+        <form name="CustomerForm">
+            <label for="fname">First Name: </label>
+            <input type="text" id="fname" name="fname" required>
+            <br />
+            <br />
+            <label for="lname">Last Name: </label>
+            <input type="text" id="lname" name="lname" required>
+            <br />
+            <br />
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" name="phone" required>
+            <br />
+            <br />
+            <label for="email">Email: </label>
+            <input type="text" id="email" name="email">
+            <br />
+            <br />
+            <div>
+                <label for="delivery">Delivery: </label>
+                <input type="radio" id="delivery" name="delivery" value="delivery">
+                <label for="pickup">Pick Up: </label>
+                <input type="radio" id="pickup" name="pickup" value="pickup">
+            </div>
+            <br />
+            <br />
+            <div class="delivery box">
+                <label for="street">Street: </label>
+                <input type="text" id="street" name="street" size="75" required>
+                <br />
+                <br />
+                <label for="street2">Street: </label>
+                <input type="text" id="street2" name="street2" size="75">
+                <br />
+                <br />
+                <label for="city">City: </label>
+                <input type="text" id="city" name="city" required>
+                <br />
+                <br />
+                <label for="zip">Zip Code: </label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+            <input type="button" value="Ok"
+        </form>
+    </main>
+   </body>
+</html>
