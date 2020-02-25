@@ -38,6 +38,13 @@ main {
     box-sizing: border-box;
     background: rgba(0,0,0,0.5);
 }
+input[type='text']:focus {
+    border: 3px solid #555;
+}
+form{
+    margin-left: 400px;
+    
+}
 label   {
     color: white;
     font-size: medium;

@@ -7,7 +7,11 @@
     <link rel="stylesheet" type="text/css" href="StyleSheet.css">
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        function Query() {
+            Document.window.location.href = 'menu.html';
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -21,21 +25,21 @@
         </div>
     </header>
     <main>
-        <form name="CustomerForm">
+        <form name="CustomerForm" class="box">
             <label for="fname">First Name: </label>
-            <input type="text" id="fname" name="fname" required>
+            <input type="text" id="fname" name="fname" size="50" required>
             <br />
             <br />
             <label for="lname">Last Name: </label>
-            <input type="text" id="lname" name="lname" required>
+            <input type="text" id="lname" name="lname" size="50" required>
             <br />
             <br />
             <label for="phone">Phone Number: </label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" id="phone" name="phone" size="50" required>
             <br />
             <br />
             <label for="email">Email: </label>
-            <input type="text" id="email" name="email">
+            <input type="text" id="email" name="email" size="75">
             <br />
             <br />
             <div>
@@ -44,7 +48,6 @@
                 <label for="pickup">Pick Up: </label>
                 <input type="radio" id="pickup" name="pickup" value="pickup">
             </div>
-            <br />
             <br />
             <div class="delivery box">
                 <label for="street">Street: </label>
