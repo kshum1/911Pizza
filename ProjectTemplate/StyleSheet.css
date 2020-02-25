@@ -38,6 +38,11 @@ main {
     box-sizing: border-box;
     background: rgba(0,0,0,0.5);
 }
+label   {
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+}
 #about{
     color: white;
 }
