@@ -71,6 +71,47 @@
         header h2, footer {
             text-align: center;
         }
+
+
+
+
+
+
+
+        .addPizza {
+            display: none;
+            z-index: 2;
+            width: 500px;
+            height: 315px;
+            position: fixed;
+            top: 200px;
+            left: 300px;
+            background: rgba(0,0,0,0.8);
+            border: 10px #000000 solid;
+            color: white;
+        }
+
+            .addPizza img {
+                width: 300px;
+                height: 200px;
+            }
+
+        #addPizzaCell {
+            border: 5px #dc2c2c solid;
+            float: left
+        }
+
+        #pSize {
+            float: right;
+            padding-top: 100px;
+            padding-right: 10px;
+        }
+
+        #pSize input {
+            float: right;
+                     
+        }
+
     </style>
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 </head>
@@ -91,67 +132,67 @@
         <table class="pizzas">
             <tr>
                 <td>
-                    <label class="pizzaLabel">Cheese Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese<br>
-                    <input type="button" value="Add To Order">
+                    <label class="pizzaLabel" id="p1">Cheese Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese<br>
+                    <input type="button" value="Add To Order" onclick="addToOrder('cheese', 'p1')">
                 </td>
                 <td>
-                    <img src="cheesePizza.jpeg" alt="Cheese Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Pepperoni Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese<br>
-                    <input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="pepperoni.jpeg" alt="Pepperoni Pizza" style="width: 300px; height: 200px;">
+                    <img src="cheesePizza.jpeg" alt="Cheese Pizza" id="cheese" style="width: 300px; height: 200px;">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="pizzaLabel">Supreme Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese, Green Peppers,
+                    <label class="pizzaLabel" id="p2">Pepperoni Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese<br>
+                    <input type="button" value="Add To Order" onclick="addToOrder('pepperoni', 'p2')">
+                </td>
+                <td>
+                    <img src="pepperoni.jpeg" alt="Pepperoni Pizza" id="pepperoni" style="width: 300px; height: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="pizzaLabel" id="p3">Supreme Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese, Green Peppers,
                     <br />Onions, Ham, Mushrooms, Black Olives<br>
-                    <input type="button" value="Add To Order">
+                    <input type="button" value="Add To Order" onclick="addToOrder('supreme', 'p3')">
                 </td>
                 <td>
-                    <img src="supreme-pizza.jpeg" alt="Supreme Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Sausage Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Sasauge, Mozzarella Cheese
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="sausage_pizza.jpg" alt="Sausage Pizza" style="width: 300px; height: 200px;">
+                    <img src="supreme-pizza.jpeg" alt="Supreme Pizza" id="supreme" style="width: 300px; height: 200px;">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="pizzaLabel">Veggie Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Tomato, Mushrooms, <br />
+                    <label class="pizzaLabel" id="p4">Sausage Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Sasauge, Mozzarella Cheese
+                    <br /><input type="button" value="Add To Order" onclick="addToOrder('sausage', 'p4')">
+                </td>
+                <td>
+                    <img src="sausage_pizza.jpg" alt="Sausage Pizza" id="sausage" style="width: 300px; height: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="pizzaLabel" id="p5">Veggie Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Tomato, Mushrooms, <br />
                     Onions, Roasted Red Peppers, Black Olives, Spinach
-                    <br /><input type="button" value="Add To Order">
+                    <br /><input type="button" value="Add To Order" onclick="addToOrder('veggie', 'p5')">
                 </td>
                 <td>
-                    <img src="veggie_pizza.jpg" alt="Veggie Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Spinach Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Spinach
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="spinach_pizza.jpg" alt="Spinach Pizza" style="width: 300px; height: 200px;">
+                    <img src="veggie_pizza.jpg" alt="Veggie Pizza" id="veggie" style="width: 300px; height: 200px;">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label class="pizzaLabel">BBQ Chicken Pizza</label><br><label>Ingredients:</label><br />BBQ Sauce, Mozzarella Cheese, Chicken, Green Peppers
-                    <br /><input type="button" value="Add To Order">
+                    <label class="pizzaLabel" id="p6">Spinach Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Spinach
+                    <br /><input type="button" value="Add To Order" onclick="addToOrder('spinach', 'p6')">
                 </td>
                 <td>
-                    <img src="chicken_pizza.jpg" alt="Chicken Pizza" style="width: 300px; height: 200px;">
+                    <img src="spinach_pizza.jpg" alt="Spinach Pizza" id="spinach" style="width: 300px; height: 200px;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="pizzaLabel" id="p7">BBQ Chicken Pizza</label><br><label>Ingredients:</label><br />BBQ Sauce, Mozzarella Cheese, Chicken, Green Peppers
+                    <br /><input type="button" value="Add To Order" onclick="addToOrder('bbq', 'p7')">
+                </td>
+                <td>
+                    <img src="chicken_pizza.jpg" alt="Chicken Pizza" id="bbq" style="width: 300px; height: 200px;">
                 </td>
             </tr>
         </table>
@@ -159,6 +200,23 @@
     <footer>
         <p>© 911 Pizza Tempe, AZ 85281 555-555-5555 Open every day from 10AM to 2AM</p>
     </footer>
+
+    <form id="addPizza" class="addPizza">
+        <div id="addPizzaCell"></div>
+        <div id="pSize">
+            <label for="smallPizza">Small $7.99</label>
+            <input id="smallPizza" type="number" min="0" max="20"><br>
+            <label for="mediumPizza">Medium $9.99</label>
+            <input id="mediumPizza" type="number" min="0" max="20"><br>
+            <label for="largePizza">Large $11.99</label>
+            <input id="largePizza" type="number" min="0" max="20"><br>
+            <input type="button" value="Cancel" onclick="cancelAdd()">
+            <input type="button" value="Add to Cart">
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="addToCartJS.js" type="text/javascript"></script>
 
 </body>
 </html>
