@@ -1,0 +1,102 @@
+
+C:\Users\ip4169\Desktop\School\911Pizza>git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> me
+
+
+C:\Users\ip4169\Desktop\School\911Pizza>git branch alex
+
+C:\Users\ip4169\Desktop\School\911Pizza>git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> me
+
+
+C:\Users\ip4169\Desktop\School\911Pizza>git branch
+  alex
+  master
+* me
+
+C:\Users\ip4169\Desktop\School\911Pizza>git checkout master
+Switched to branch 'master'
+Your branch is behind 'origin/master' by 25 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+C:\Users\ip4169\Desktop\School\911Pizza>git pull
+Updating 29460f5..93838ee
+Fast-forward
+ ProjectTemplate/ProjectServices.asmx.cs |  38 ++++
+ ProjectTemplate/ProjectTemplate.csproj  |  13 +-
+ ProjectTemplate/StyleSheet.css          |  12 ++
+ ProjectTemplate/Web.config              |  15 +-
+ ProjectTemplate/addEmployee.html        | 226 ++++++++++++++++++++++++
+ ProjectTemplate/addToCartJS.js          |  18 ++
+ ProjectTemplate/cart.html               |  22 +++
+ ProjectTemplate/form.html               |  72 ++++++++
+ ProjectTemplate/home.html               |  85 ++++++++-
+ ProjectTemplate/index.html              |   4 +-
+ ProjectTemplate/menu.html               | 299 +++++++++++++++++++++++---------
+ ProjectTemplate/selection.html          |  85 +++++++++
+ 12 files changed, 789 insertions(+), 100 deletions(-)
+ create mode 100644 ProjectTemplate/addEmployee.html
+ create mode 100644 ProjectTemplate/addToCartJS.js
+ create mode 100644 ProjectTemplate/cart.html
+ create mode 100644 ProjectTemplate/form.html
+ create mode 100644 ProjectTemplate/selection.html
+
+C:\Users\ip4169\Desktop\School\911Pizza>pwd
+'pwd' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\ip4169\Desktop\School\911Pizza>git branch
+  alex
+* master
+  me
+
+C:\Users\ip4169\Desktop\School\911Pizza>git add -A
+
+C:\Users\ip4169\Desktop\School\911Pizza>git commit -m "fixed it"
+[master 22b89bf] fixed it
+ Committer: Thach <Alex.Thach@Symphonyhealth.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+
+C:\Users\ip4169\Desktop\School\911Pizza>git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 355 bytes | 59.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kshum1/911Pizza.git
+   93838ee..22b89bf  master -> master
+
+C:\Users\ip4169\Desktop\School\911Pizza>git pull
+Already up to date.
+
+C:\Users\ip4169\Desktop\School\911Pizza>
