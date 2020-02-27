@@ -4,9 +4,30 @@
 <head>
     <meta charset="utf-8" />
     <title>Add An Employee</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
+
         var currentRow = null;
+
+        function CreateAccount(uid, pass) {
+            var webMethod = "ProjectServices.asmx/RequestAccount";
+            var parameters = "{\"uid\":\"" + encodeURI(uid) + "\", \"pass\":\"" + encodeURI(pass) + "\"}";
+
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    alert("Employee Added!");
+                },
+                error: function (e) {
+                    alert("this code will only execute if javascript is unable to access the webservice");
+                }
+            });
+
+        }
 
         function onFormSubmit() {
 
@@ -65,7 +86,7 @@
         function deleteData(td) {
             if (confirm('Are you sure you want to delete this record?')) {
                 currentRow = td.parentElement.parentElement;
-                document.getElementById("id").deleteRow(currentRow.rowIndex);
+                document.getElementById("id").deleteData(currentRow.rowIndex);
                 resetForm();
             }
         }
@@ -90,7 +111,7 @@
             padding: 40px 40px;
             background: rgba(0,0,0,0.5);
             font-family: "montserrat", sans-serif;
-            overflow:auto;
+            overflow: auto;
         }
 
         h1 {
@@ -135,19 +156,19 @@
             transition: all 0.1s;
         }
 
-        button:hover{
-            background: white;
-			color: black;
-        }
+            button:hover {
+                background: white;
+                color: black;
+            }
 
         table {
             border-collapse: collapse;
             color: white;
         }
 
-        table.list {
-            width: 100%;
-        }
+            table.list {
+                width: 100%;
+            }
 
         td, th {
             border: 1px solid #dddddd;
@@ -155,19 +176,20 @@
             padding: 8px;
         }
 
-        tr:nth-child(even), table.list thead>tr {
+        tr:nth-child(even), table.list thead > tr {
             background-color: darkgrey;
         }
-
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <h1>Add An Employee</h1>
-            <form onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
-            <fieldset>
+            <form onsubmit="CreateAccount($('#user').val(), $('#pass').val()); event.preventDefault(); onFormSubmit(); return false;" autocomplete="off">
 
+            <!--<form onsubmit="event.preventDefault(); onFormSubmit(); return false;" autocomplete="off">
+            -->
+            <fieldset>
                 <legend>Employee ID</legend>
                 <input type="text" class="form" name="IDnum" id="id" />
 
