@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-        function Query() {
+        function Query(phone) {
+
+            
             Document.window.location.href = 'menu.html';
         }
     </script>
@@ -26,6 +28,7 @@
     </header>
     <main>
         <form name="CustomerForm" class="box">
+            <!-- Need to hide the divs and make a checkbox to check the customer number-->
             <label for="fname">First Name: </label>
             <input type="text" id="fname" name="fname" size="50" required>
             <br />
