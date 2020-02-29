@@ -25,7 +25,14 @@
         </div>
     </header>
     <main>
-        <form name="CustomerForm" class="box">
+        <form name="PhoneNumber" class="shown">
+            <label for="phone">Phone Number: </label>
+            <input type="text" id="phone" name="phone" size="50" required />
+            <button onclick="Query();">Search</button>
+        </form>
+
+
+        <form name="CustomerForm" class="hidden">
             <label for="fname">First Name: </label>
             <input type="text" id="fname" name="fname" size="50" required>
             <br />
@@ -35,7 +42,7 @@
             <br />
             <br />
             <label for="phone">Phone Number: </label>
-            <input type="text" id="phone" name="phone" size="50" required>
+            <input type="text" id="phone" name="phone" size="50" required />
             <br />
             <br />
             <label for="email">Email: </label>
@@ -49,7 +56,7 @@
                 <input type="radio" id="pickup" name="pickup" value="pickup">
             </div>
             <br />
-            <div class="delivery box">
+            <div class="hidden">
                 <label for="street">Street: </label>
                 <input type="text" id="street" name="street" size="75" required>
                 <br />
@@ -65,7 +72,7 @@
                 <label for="zip">Zip Code: </label>
                 <input type="text" id="zip" name="zip" required>
             </div>
-            <button onclick="Query();">OK</button>
+            <button onclick="add();">OK</button>
         </form>
     </main>
    </body>
