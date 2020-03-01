@@ -1,10 +1,79 @@
-<<<<<<< HEAD
 ﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>911 Pizza Menu</title>
+    <script>
+        function cancelAdd() {
+            $("#addPizzaCell").html("");
+            $("#addPizza").hide();
+            document.getElementById("addPizza").reset();
+        }
+
+        function addToOrder(pic, name) {
+            var pizzaPic = document.createElement("img");
+            var pizzaName = document.createElement("h1");
+
+            pizzaName.innerHTML = document.getElementById(name).innerText;
+            document.getElementById("addPizzaCell").appendChild(pizzaName);
+
+            pizzaPic.src = document.getElementById(pic).src;
+            document.getElementById("addPizzaCell").appendChild(pizzaPic);
+
+            $("#addPizza").show();
+
+            document.getElementById("addToCart").setAttribute("onclick", "addToCart(" + name + ")");
+
+
+        }
+
+        function addToCart(name) {
+            console.log(name);
+
+            var pizzaName = document.getElementById(name).innerText;
+            var pizzaSize, quantity;
+
+            //jQuery ajax method
+            //$.ajax({
+            //	type: "POST",
+            //	url: webMethod,
+            //	data: parameters,
+            //	contentType: "application/json; charset=utf-8",
+            //	dataType: "json",
+            //	success: function (msg) {
+            //		var responseFromServer = msg.d;
+            //		if (responseFromServer == true) {
+            //			alert("Added to Cart!");
+            //			cancelAdd();
+            //		}
+            //	},
+            //	error: function (e) {
+            //		alert("this code will only execute if javascript is unable to access the webservice");
+            //	}
+            //});
+
+            if (document.getElementById("smallPizza").value = !0) {
+                quantity = document.getElementById("smallPizza").value;
+                pizzaSize = "Small";
+
+            }
+
+            if (document.getElementById("mediumPizza").value = !0) {
+                quantity = document.getElementById("meduimPizza").value;
+                pizzaSize = "Medium";
+
+            }
+
+            if (document.getElementById("largePizza").value = !0) {
+                quantity = document.getElementById("largePizza").value;
+                pizzaSize = "Large";
+
+            }
+
+        }
+    </script>
     <style>
+
         .navbar {
             height: 50px;
             width: auto;
@@ -28,9 +97,9 @@
             margin-left: 3px;
         }
 
-        .navButton:hover {
+            .navButton:hover {
                 background-color: blue;
-        }
+            }
 
         body {
             margin: 0;
@@ -73,12 +142,6 @@
             text-align: center;
         }
 
-
-
-
-
-
-
         .addPizza {
             display: none;
             z-index: 2;
@@ -108,11 +171,9 @@
             padding-right: 10px;
         }
 
-        #pSize input {
-            float: right;
-                     
-        }
-
+            #pSize input {
+                float: right;
+            }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 </head>
@@ -206,184 +267,18 @@
         <div id="addPizzaCell"></div>
         <div id="pSize">
             <label for="smallPizza">Small $7.99</label>
-            <input id="smallPizza" type="number" min="0" max="20"><br>
+            <input id="smallPizza" type="number" min="0" max="20" value="0"><br>
             <label for="mediumPizza">Medium $9.99</label>
-            <input id="mediumPizza" type="number" min="0" max="20"><br>
+            <input id="mediumPizza" type="number" min="0" max="20" value="0"><br>
             <label for="largePizza">Large $11.99</label>
-            <input id="largePizza" type="number" min="0" max="20"><br>
+            <input id="largePizza" type="number" min="0" max="20" value="0"><br>
             <input type="button" value="Cancel" onclick="cancelAdd()">
-            <input type="button" value="Add to Cart">
+            <input type="button" id="addToCart" value="Add to Cart" onclick="addToCart()">
         </div>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="addToCartJS.js" type="text/javascript"></script>
+
 
 </body>
 </html>
-=======
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>911 Pizza Menu</title>
-    <style>
-        .navbar {
-            height: 50px;
-            width: auto;
-            background-color: black;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .navButton {
-            background-color: #bb2323;
-            color: #ffffff;
-            font-size: 15px;
-            border-color: #000000;
-            border-radius: 5px;
-            height: 40px;
-            width: 100px;
-            margin-right: 3px;
-            margin-left: 3px;
-        }
-
-        .navButton:hover {
-                background-color: blue;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-image: url('restaurantblack2.jpg');
-            background-size: cover;
-            font-family: 'Shadows Into Light', cursive;
-            background-attachment: fixed;
-        }
-
-        .pizzas {
-            margin-left: 225px;
-            padding: 80px 40px;
-            box-sizing: border-box;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .pizzaLabel {
-            color: peachpuff;
-        }
-
-        main h1 {
-            margin-left: 75px;
-            color: white;
-        }
-
-        td {
-            padding-bottom: 60px;
-            color: white;
-        }
-
-        header h1 {
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: 70px;
-        }
-
-        header h2, footer {
-            text-align: center;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <h1>911 Pizza</h1>
-        <h2><em>"No more pizza emergencies"</em></h2>
-        <div class="navbar">
-            <button class="navButton" onclick="window.location.href='home.html'">Home</button>
-            <button class="navButton" onclick="window.location.href='contact.html'">Contact</button>
-            <button class="navButton" onclick="window.location.href='menu.html'">Menu</button>
-            <button class="navButton" onclick="window.location.href='cart.html'">Cart</button>
-        </div>
-    </header>
-
-    <main>
-        <h1>Pizzas</h1>
-        <table class="pizzas">
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Cheese Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese<br>
-                    <input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="cheesePizza.jpeg" alt="Cheese Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Pepperoni Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese<br>
-                    <input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="pepperoni.jpeg" alt="Pepperoni Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Supreme Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Pepperoni, Mozzarella Cheese, Green Peppers,
-                    <br />Onions, Ham, Mushrooms, Black Olives<br>
-                    <input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="supreme-pizza.jpeg" alt="Supreme Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Sausage Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Sasauge, Mozzarella Cheese
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="sausage_pizza.jpg" alt="Sausage Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Veggie Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Tomato, Mushrooms, <br />
-                    Onions, Roasted Red Peppers, Black Olives, Spinach
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="veggie_pizza.jpg" alt="Veggie Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">Spinach Pizza</label><br><label>Ingredients:</label><br />Pizza Sauce, Mozzarella Cheese, Spinach
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="spinach_pizza.jpg" alt="Spinach Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="pizzaLabel">BBQ Chicken Pizza</label><br><label>Ingredients:</label><br />BBQ Sauce, Mozzarella Cheese, Chicken, Green Peppers
-                    <br /><input type="button" value="Add To Order">
-                </td>
-                <td>
-                    <img src="chicken_pizza.jpg" alt="Chicken Pizza" style="width: 300px; height: 200px;">
-                </td>
-            </tr>
-        </table>
-    </main>
-    <footer>
-        <p>© 911 Pizza Tempe, AZ 85281 555-555-5555 Open every day from 10AM to 2AM</p>
-    </footer>
-
-</body>
-</html>
->>>>>>> c33e6dd3551b7997249e33b75584c4e6167f2e47
