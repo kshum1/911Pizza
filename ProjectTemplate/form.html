@@ -31,11 +31,10 @@
                     else {
                         document.getElementById("customerForm").className = "shown";
                     }
+                },
                     error: function (e) {
                         alert("This code shows when error happens on server");
-                        
                     }
-                }
             }); 
         }
         function ShowHideDiv(type) {
@@ -47,8 +46,34 @@
             else {
                 pass;
             }
-        }       
-    }
+        }  
+
+        function add() {
+            // getting my values
+            var phoneValue = document.getElementById("phone").value;
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var cemail = document.getElementById("email").value;
+            var webMethod = "ProjectServices.asmx/insertCustomer";
+            // parameters need to be the same as in the web service. Then you are encoding so that no special
+            //characters break the code. 
+            var parameters = "{\"first\":\"" + encodeURI(fname) + "\", \"last\":\"" + encodeURI(lname) + "\", \"phone\":\"" + encodeURI(phoneValue) + "\", \"email\":\"" + encodeURI(cemail) + "\"}";
+
+            //jQuery ajax method
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                        window.location.replace('menu.html');
+                    },
+                    error: function (e) {
+                        alert("This code shows when error happens on server");  
+                    }
+            }); 
+        }
     </script>
 </head>
 <body>

@@ -183,9 +183,46 @@ namespace ProjectTemplate
 			}
 			//return the result!
 			return success;
+		}
 
+		[WebMethod]
+		public void insertCustomer(string first, string last, string phone, string email)
+		{
+			string sqlConnectString = getConString();
 
+			//string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+			//the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
+			//does is tell mySql server to return the primary key of the last inserted row.
+			string sqlSelect = "insert into customers (CFName, CLName, CPhone, CEmail) " +
+				"values(@CFNameValue, @CLNameValue, @CPhoneValue, @CEmailValue); SELECT LAST_INSERT_ID();";
 
+			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+			sqlCommand.Parameters.AddWithValue("@CFNameValue", HttpUtility.UrlDecode(first));
+			sqlCommand.Parameters.AddWithValue("@CLNameValue", HttpUtility.UrlDecode(last));
+			sqlCommand.Parameters.AddWithValue("@CPhoneValue", HttpUtility.UrlDecode(phone));
+			sqlCommand.Parameters.AddWithValue("@CEmailValue", HttpUtility.UrlDecode(email));
+
+			//this time, we're not using a data adapter to fill a data table.  We're just
+			//opening the connection, telling our command to "executescalar" which says basically
+			//execute the query and just hand me back the number the query returns (the ID, remember?).
+			//don't forget to close the connection!
+			sqlConnection.Open();
+			//we're using a try/catch so that if the query errors out we can handle it gracefully
+			//by closing the connection and moving on
+			try
+			{
+				int accountID = Convert.ToInt32(sqlCommand.ExecuteScalar());
+				//here, you could use this accountID for additional queries regarding
+				//the requested account.  Really this is just an example to show you
+				//a query where you get the primary key of the inserted row back from
+				//the database!
+			}
+			catch (Exception e)
+			{ 
+			}
+			sqlConnection.Close();
 		}
 	}
 }
