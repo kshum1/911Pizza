@@ -9,8 +9,46 @@
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
         function Query() {
-            Document.window.location.href = 'menu.html';
+            // getting my values
+            var phoneValue = document.getElementById("phone").value;
+            var webMethod = "ProjectServices.asmx/phoneSearch";
+            // parameters need to be the same as in the web service. Then you are encoding so that no special
+            //characters break the code. 
+            var parameters = "{\"phoneNum\":\"" + encodeURI(phoneValue) + "\"}";
+
+            //jQuery ajax method
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    var responseFromServer = msg.d;
+                    if (responseFromServer == true) {
+                        window.location.replace('menu.html');
+                    }
+                    else {
+                        document.getElementById("customerForm").className = "shown";
+                    }
+                    error: function (e) {
+                        alert("This code shows when error happens on server");
+                        
+                    }
+                }
+            }); 
         }
+        function ShowHideDiv(type) {
+            // trying to show the delivery requirements if the delivery radio button
+            var chkYes = document.getElementById(type).value;
+            if (chkYes == "delivery") {
+                document.getElementById("deliveryInfo").className = "shown";
+            }
+            else {
+                pass;
+            }
+        }       
+    }
     </script>
 </head>
 <body>
@@ -32,7 +70,7 @@
         </form>
 
 
-        <form name="CustomerForm" class="hidden">
+        <form id="customerForm" name="CustomerForm" class="hidden">
             <label for="fname">First Name: </label>
             <input type="text" id="fname" name="fname" size="50" required>
             <br />
@@ -51,12 +89,12 @@
             <br />
             <div>
                 <label for="delivery">Delivery: </label>
-                <input type="radio" id="delivery" name="delivery" value="delivery">
+                <input type="radio" id="delivery" name="delivery" value="delivery" onclick="ShowHideDiv('delivery')">
                 <label for="pickup">Pick Up: </label>
-                <input type="radio" id="pickup" name="pickup" value="pickup">
+                <input type="radio" id="pickup" name="delivery" value="pickup">
             </div>
             <br />
-            <div class="hidden">
+            <div id="deliveryInfo" class="hidden">
                 <label for="street">Street: </label>
                 <input type="text" id="street" name="street" size="75" required>
                 <br />

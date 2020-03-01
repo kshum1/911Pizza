@@ -143,5 +143,49 @@ namespace ProjectTemplate
 			}
 			sqlConnection.Close();
 		}
+
+		[WebMethod]
+		public bool phoneSearch(string phoneNum)
+		{
+			// LOGIC: This will take the phone number provided and search for it in the database.
+			//The return is an integer which is the num of rows that the query finds in the database.
+
+			bool success = false;
+
+			//our connection string comes from our web.config file like we talked about earlier
+			string sqlConnectString = getConString();
+			//here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
+			string sqlSelect = "SELECT CID FROM Customer WHERE CPhone=@cPhoneValue";
+
+			//set up our connection object to be ready to use our connection string
+			MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+			//set up our command object to use our connection, and our query
+			MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+			//tell our command to replace the @parameters with real values
+			//we decode them because they came to us via the web so they were encoded
+			//for transmission (funky characters escaped, mostly)
+			sqlCommand.Parameters.AddWithValue("@cPhoneValue", HttpUtility.UrlDecode(phoneNum));
+
+			//a data adapter acts like a bridge between our command object and 
+			//the data we are trying to get back and put in a table object
+			MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+			//here's the table we want to fill with the results from our query
+			DataTable sqlDt = new DataTable();
+			//here we go filling it!
+			sqlDa.Fill(sqlDt);
+			//check to see if any rows were returned.  If they were, it means it's 
+			//a legit account
+			if (sqlDt.Rows.Count > 0)
+			{
+				//flip our flag to true so we return a value that lets them know they're logged in
+				success = true;
+			}
+			//return the result!
+			return success;
+
+
+
+		}
 	}
 }
