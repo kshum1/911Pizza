@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <!--DO NOT FORGET THIS SCRIPT TAG SO YOU CAN USE JQUERY!!!!!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-        function Query() {
+        function phoneSearch() {
             // getting my values
             var phoneValue = document.getElementById("phone").value;
             var webMethod = "ProjectServices.asmx/phoneSearch";
             // parameters need to be the same as in the web service. Then you are encoding so that no special
             //characters break the code. 
-            var parameters = "{\"phoneNum\":\"" + encodeURI(phoneValue) + "\"}";
-
+            var parameters = "{\"phoneNum\":\""+encodeURI(phoneValue)+"\"}";
+            console.log("Hi");
             //jQuery ajax method
             $.ajax({
                 type: "POST",
@@ -84,14 +84,14 @@
             <button class="navButton" onclick="window.location.href='home.html'">Home</button>
             <button class="navButton" onclick="window.location.href='contact.html'">Contact</button>
             <button class="navButton" onclick="window.location.href='menu.html'">Menu</button>
-            <button class="navButton" onclick="nwindow.location.href='cart.html'">Cart</button>
+            <button class="navButton" onclick="window.location.href='cart.html'">Cart</button>
         </div>
     </header>
     <main>
-        <form name="PhoneNumber" class="shown">
+        <form action="phoneSearch()" name="PhoneNumber" class="shown">
             <label for="phone">Phone Number: </label>
             <input type="text" id="phone" name="phone" size="50" required />
-            <button onclick="Query();">Search</button>
+            <button>Search</button>
         </form>
 
 
