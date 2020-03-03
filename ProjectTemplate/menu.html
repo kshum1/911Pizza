@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <title>911 Pizza Menu</title>
+
     <script>
+        let pizzaName = "";
+
         function cancelAdd() {
             $("#addPizzaCell").html("");
             $("#addPizza").hide();
@@ -12,65 +15,82 @@
 
         function addToOrder(pic, name) {
             var pizzaPic = document.createElement("img");
-            var pizzaName = document.createElement("h1");
+            var pName = document.createElement("h1");
+            pizzaName = document.getElementById(name).innerText;
 
-            pizzaName.innerHTML = document.getElementById(name).innerText;
-            document.getElementById("addPizzaCell").appendChild(pizzaName);
+            pName.innerHTML = document.getElementById(name).innerText;
+            document.getElementById("addPizzaCell").appendChild(pName);
 
             pizzaPic.src = document.getElementById(pic).src;
             document.getElementById("addPizzaCell").appendChild(pizzaPic);
 
             $("#addPizza").show();
 
-            document.getElementById("addToCart").setAttribute("onclick", "addToCart(" + name + ")");
-
 
         }
 
-        function addToCart(name) {
-            console.log(name);
-
-            var pizzaName = document.getElementById(name).innerText;
-            var pizzaSize, quantity;
+        function toTheBase(pName, pSize, pQuantity) {
+            var cID = 17;
+            var webMethod = "ProjectServices.asmx/addingPizza";
+            var parameters = "{\"cID\":\"" + encodeURI(cID) + "\", \"pizzaName\":\"" + encodeURI(pName) + "\", \"size\":\"" + encodeURI(pSize) + "\", \"quantity\":\"" + encodeURI(pQuantity) + "\"}";
 
             //jQuery ajax method
-            //$.ajax({
-            //	type: "POST",
-            //	url: webMethod,
-            //	data: parameters,
-            //	contentType: "application/json; charset=utf-8",
-            //	dataType: "json",
-            //	success: function (msg) {
-            //		var responseFromServer = msg.d;
-            //		if (responseFromServer == true) {
-            //			alert("Added to Cart!");
-            //			cancelAdd();
-            //		}
-            //	},
-            //	error: function (e) {
-            //		alert("this code will only execute if javascript is unable to access the webservice");
-            //	}
-            //});
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    alert("Added to Cart!");
+                },
+                error: function (e) {
+                    alert("this code will only execute if javascript is unable to access the webservice");
+                }
+            });
+        }
 
-            if (document.getElementById("smallPizza").value = !0) {
-                quantity = document.getElementById("smallPizza").value;
+        function itWorks() {
+            alert("Added to Order!")
+            cancelAdd();
+        }
+
+        function addPizza() {
+            console.log(pizzaName);
+            console.log("Hello");
+
+            var pizzaSize, sQuantity, mQuantity, lQuantity;
+
+            if (document.getElementById("smallPizza").value != "0") {
+                sQuantity = document.getElementById("smallPizza").value;
                 pizzaSize = "Small";
 
+                console.log(sQuantity);
+                itWorks();
+                console.log(pizzaSize);
+
             }
 
-            if (document.getElementById("mediumPizza").value = !0) {
-                quantity = document.getElementById("meduimPizza").value;
+            if (document.getElementById("mediumPizza").value != "0") {
+                mQuantity = document.getElementById("mediumPizza").value;
                 pizzaSize = "Medium";
+                console.log(mQuantity);
+                itWorks();
+                console.log(pizzaSize);
 
             }
 
-            if (document.getElementById("largePizza").value = !0) {
-                quantity = document.getElementById("largePizza").value;
+            if (document.getElementById("largePizza").value != "0") {
+                lQuantity = document.getElementById("largePizza").value;
                 pizzaSize = "Large";
+                console.log(lQuantity);
+                itWorks();
+                console.log(pizzaSize);
 
             }
 
         }
+
     </script>
     <style>
 
@@ -273,7 +293,7 @@
             <label for="largePizza">Large $11.99</label>
             <input id="largePizza" type="number" min="0" max="20" value="0"><br>
             <input type="button" value="Cancel" onclick="cancelAdd()">
-            <input type="button" id="addToCart" value="Add to Cart" onclick="addToCart()">
+            <input type="button" id="addToCart" onclick="addPizza()" value="Add to Cart">
         </div>
     </form>
 
